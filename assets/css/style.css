@@ -332,7 +332,9 @@ body {
     overflow: hidden;
     box-shadow: var(--shadow-2);
     transition: var(--transition-duration-quick) var(--transition-easing-quick);
+    overflow: hidden;
 }
+
 .card:where(:hover, :focus-within) {
     box-shadow: var(--shadow-4);
 }
@@ -373,6 +375,32 @@ body {
 }
 .card-content {
     padding: 20px 20px 24px;
+    position: relative;
+}
+.card-content .property-id {
+    display: inline-block;
+    position: absolute;
+    font-size: 1.3rem;
+    top: 17px;
+    right: 17px;
+    background: #fff;
+    color: #222;
+    border: 2px solid #00bcd4;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-weight: bold;
+    font-size: 1.35rem;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+    pointer-events: auto;
+}
+.card-content .property-id:hover {
+    background: #00bcd4;
+    color: #fff;
+    border-color: #00bcd4;
+    transform: translateY(-2px);
 }
 .card-title {
     margin-block: 8px;
@@ -381,6 +409,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     transition: var(--transition-duration-quick) var(--transition-easing-quick);
+    padding-top: 10px;
 }
 .card-title :where(:hover, :focus-visible) {
     color: var(--neutral-100);
@@ -388,6 +417,13 @@ body {
 
 .card-text {
     color: var(--neutral-40);
+    display: block;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 16px;
+    padding-top: 12px;
+    font-style: normal;
+    word-break: break-word;
+    text-align: center;
 }
 
 .card-meta-list {
@@ -671,6 +707,7 @@ body {
 \*-----------------------------------*/
 .story .section-subtitle {
     color: var(--primary-100);
+    margin-top: 30px;
 }
 .story .section-title {
     margin-block: 12px;
@@ -842,8 +879,19 @@ body {
         padding-block: 160px 100px;
     }
     .search-bar {
-        grid-template-columns: 160px 160px 1fr max-content;
+        display: flex;
+        flex-direction: column;
         gap: 0;
+        background: var(--white);
+        border-radius: 20px;
+        padding: 20px 24px;
+        box-shadow: var(--shadow-4);
+    }
+    .search-items-row {
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        align-items: end;
     }
     .search-item .material-symbols-rounded {
         display: none;
@@ -859,8 +907,11 @@ body {
     }
 
     .search-btn {
-        height: 100%;
-        margin-inline-start: 8px;
+        margin: 24px auto 0 auto;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     /*PROPERTY*/
